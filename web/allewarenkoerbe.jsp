@@ -1,6 +1,6 @@
 <%-- 
-    Document   : index
-    Created on : 01.08.2017, 11:32:56
+    Document   : allewarenkoerbe
+    Created on : 04.08.2017, 11:50:43
     Author     : rhemmerling
 --%>
 
@@ -9,11 +9,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Startseite [Web Components ( aufgabe06a_warenkorb )]</title>
+        <title>Alle Warenkörbe</title>
     </head>
     <body>
         <jsp:include page = "header.jsp"/>
-        <h1>Web Components ( aufgabe06a_warenkorb ) - Startseite</h1>
-    </body>
+        <h1>Alle Warenkörbe</h1>
     </body>
 </html>
