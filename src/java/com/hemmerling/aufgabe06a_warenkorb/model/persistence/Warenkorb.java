@@ -19,8 +19,8 @@ public class Warenkorb {
     List<Artikel> artikelListe = new LinkedList<Artikel>();
 
     {        
-        artikelListe.add(new Artikel("Apfel.Warenkorb", 0.40));
-        artikelListe.add(new Artikel("Birne.Warenkorb", 0.50));
+        //artikelListe.add(new Artikel("Apfel.Warenkorb", 0.40));
+        //artikelListe.add(new Artikel("Birne.Warenkorb", 0.50));
     }
     
     public void add(Artikel artikel){
