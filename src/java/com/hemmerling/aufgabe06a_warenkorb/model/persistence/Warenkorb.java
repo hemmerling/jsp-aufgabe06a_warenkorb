@@ -31,7 +31,7 @@ public class Warenkorb {
         return artikelListe;
     }
 
-    protected Warenkorb() {
+    public Warenkorb() {
         // Exists only to defeat instantiation.
     }
 

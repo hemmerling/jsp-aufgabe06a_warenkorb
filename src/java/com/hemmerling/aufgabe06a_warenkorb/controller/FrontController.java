@@ -41,6 +41,8 @@ public class FrontController extends HttpServlet {
     private static final String ADD_ARTIKEL = "add_artikel";
     private static final String ARTIKELLISTE = "artikelliste";
 
+    Warenkorb warenkorb = new Warenkorb(); 
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -55,7 +57,6 @@ public class FrontController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         HttpSession session = request.getSession();
-        Warenkorb warenkorb = Warenkorb.getInstance(); // Singleton 
 
         session.setAttribute(WARENKORB, warenkorb);
         Object obj1 = session.getAttribute(WARENKORB);
@@ -65,8 +66,6 @@ public class FrontController extends HttpServlet {
 
         String nextPage = new String("index.jsp");
 
-        System.out.println("test");
-
         if (action != null && !action.trim().isEmpty()) {
             switch (action) {
                 case WARENKORB: {
@@ -75,7 +74,6 @@ public class FrontController extends HttpServlet {
                 }
                 case ADD_ARTIKEL: {
                     int id = Integer.valueOf((String)request.getParameter(ID));
-                    System.out.println(id);
                     ArrayList<Artikel> artikelListe = new ArtikelListe().get();
                     warenkorb.add(artikelListe.get(id));
                     nextPage = WARENKORB_PAGE;
