@@ -6,7 +6,6 @@
 package com.hemmerling.aufgabe06a_warenkorb.model.persistence;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
@@ -14,16 +13,15 @@ import java.util.List;
  */
 public class ArtikelListe {
 
-ArrayList<Artikel> artikelListe = new ArrayList<Artikel>();
+    ArrayList<Artikel> artikelListe = new ArrayList<Artikel>();
 
     {
         artikelListe.add(new Artikel("Apfel.ArtikelListe", 0.45));
         artikelListe.add(new Artikel("Birne.ArtikelListe", 0.55));
     }
-    
+
     public ArrayList<Artikel> get() {
         return artikelListe;
     }
-    
-    
+
 }
