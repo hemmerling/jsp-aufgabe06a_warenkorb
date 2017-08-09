@@ -27,14 +27,9 @@ public class WarenkorbSessionListener implements HttpSessionListener {
 
     @Override
     public void sessionCreated(HttpSessionEvent event) {
-        System.out.println("Warenkorb wird für den Benutzer angelegt");
         HttpSession session = event.getSession();
-
-        addWarenkorb(session); // Warenkorb als Session-Attribut anlegen
-        System.out.println("Warenkorb als Session-Attribut anlegen");
- 
+        addWarenkorb(session); // Warenkorb als Session-Attribut anlegen 
         addToSessionList(session);
-        System.out.println("Session der Sessionliste hinzufuegen");
     }
 
     @Override
