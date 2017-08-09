@@ -16,8 +16,8 @@ public class ArtikelListe {
     ArrayList<Artikel> artikelListe = new ArrayList<Artikel>();
 
     {
-        artikelListe.add(new Artikel("Apfel.ArtikelListe", 0.45));
-        artikelListe.add(new Artikel("Birne.ArtikelListe", 0.55));
+        artikelListe.add(new Artikel("Apfel", 0.45));
+        artikelListe.add(new Artikel("Birne", 0.55));
     }
 
     public ArrayList<Artikel> get() {
