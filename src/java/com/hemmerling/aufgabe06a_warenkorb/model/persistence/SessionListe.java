@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 public class SessionListe {
 
     private static SessionListe instance = null;
-    ArrayList<HttpSession> sessionListe = new ArrayList<HttpSession>();
+    private ArrayList<HttpSession> sessionListe = new ArrayList<HttpSession>();
 
     protected SessionListe() {
         // Exists only to defeat instantiation.
@@ -30,6 +30,10 @@ public class SessionListe {
 
     public void add(HttpSession session) {
         sessionListe.add(session);
+    }
+
+    public void remove(HttpSession session) {
+        sessionListe.remove(session);
     }
 
     public ArrayList<HttpSession> get() {

@@ -58,9 +58,10 @@ public class FrontController extends HttpServlet {
 
         HttpSession session = request.getSession();
 
+        //session.setAttribute(WARENKORB, warenkorb);
+        //Object obj1 = session.getAttribute(WARENKORB);
         session.setAttribute(WARENKORB, warenkorb);
-        Object obj1 = session.getAttribute(WARENKORB);
-        session.setAttribute(WARENKORB, warenkorb);
+        Warenkorb warenkorb = (Warenkorb) session.getAttribute(WARENKORB);
 
         String action = request.getParameter(ACTION);
 

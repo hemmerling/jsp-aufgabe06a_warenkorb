@@ -22,36 +22,39 @@ import com.hemmerling.aufgabe06a_warenkorb.model.persistence.*;
 @WebListener
 public class WarenkorbSessionListener implements HttpSessionListener {
 
-  @Override
-  public void sessionCreated(HttpSessionEvent event) {
-    System.out.println("===> Warenkorb wird zum aktuellen Benutzers hinzugefüht!!!");
-    HttpSession session = event.getSession();
-    
-    addWarenkorb(session); // Warenkorb als Session-Attribut anlegen
-    
-    addToSessionList(session);
-  }
+    private static final String WARENKORB = "warenkorb";
+    private static final String SESSIONS = "sessions";
 
-  @Override
-  public void sessionDestroyed(HttpSessionEvent event) {
-    HttpSession session = event.getSession();
-    removeFromSessionList(session);
-  }
+    @Override
+    public void sessionCreated(HttpSessionEvent event) {
+        System.out.println("Warenkorb wird für den Benutzer angelegt");
+        HttpSession session = event.getSession();
 
-  private void addToSessionList(HttpSession session) {
-    ServletContext application = session.getServletContext();
-    List<HttpSession> sessionList = (List<HttpSession>) application.getAttribute("SESSIONS");
-    sessionList.add(session);
-  }
+        addWarenkorb(session); // Warenkorb als Session-Attribut anlegen
 
-  private void addWarenkorb(HttpSession session) {
-    session.setAttribute("WARENKORB", new Warenkorb());
-  }
+        addToSessionList(session);
+    }
 
+    @Override
+    public void sessionDestroyed(HttpSessionEvent event) {
+        HttpSession session = event.getSession();
+        removeFromSessionList(session);
+    }
 
-  private void removeFromSessionList(HttpSession session) {
-    ServletContext application = session.getServletContext();
-    List<HttpSession> sessionList = (List<HttpSession>) application.getAttribute("SESSIONS");
-    sessionList.remove(session);
-  }
+    private void addToSessionList(HttpSession session) {
+        ServletContext application = session.getServletContext();
+        SessionListe sessionListe = (SessionListe) application.getAttribute(SESSIONS);
+        System.out.println("Sessionliste-Größe=" + sessionListe.get().size());
+        sessionListe.add(session);
+    }
+
+    private void addWarenkorb(HttpSession session) {
+        session.setAttribute(WARENKORB, new Warenkorb());
+    }
+
+    private void removeFromSessionList(HttpSession session) {
+        ServletContext application = session.getServletContext();
+        SessionListe sessionListe = (SessionListe) application.getAttribute(SESSIONS);
+        sessionListe.remove(session);
+    }
 }
