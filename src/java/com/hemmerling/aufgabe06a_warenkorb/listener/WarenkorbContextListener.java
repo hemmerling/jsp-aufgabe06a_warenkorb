@@ -20,14 +20,14 @@ import javax.servlet.http.HttpServletRequest;
  * @author Administrator
  */
 @WebListener("WarenkorbListener")
-public class WarenkorbListener implements ServletRequestListener, ServletContextListener {
+public class WarenkorbContextListener implements ServletRequestListener, ServletContextListener {
 
     static {
         // statischer Initalisierungsblock
-        System.out.println( WarenkorbListener.class.getName() +  " - Static initalisation block");
+        System.out.println(WarenkorbContextListener.class.getName() +  " - Static initalisation block");
     }
 
-    public WarenkorbListener(){}
+    public WarenkorbContextListener(){}
 
     // @Override
 //    public void init() throws ServletException {
@@ -39,7 +39,7 @@ public class WarenkorbListener implements ServletRequestListener, ServletContext
         SessionListe sessionListe = SessionListe.getInstance(); // Singleton 
         ServletContext context2 = event.getServletContext();
         context2.setAttribute("SESSIONS", sessionListe);
-        System.out.println(WarenkorbListener.class.getName() +  " - contextInitialized");
+        System.out.println(WarenkorbContextListener.class.getName() +  " - contextInitialized");
     }
 
     @Override
