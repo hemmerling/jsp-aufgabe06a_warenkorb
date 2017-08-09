@@ -31,8 +31,10 @@ public class WarenkorbSessionListener implements HttpSessionListener {
         HttpSession session = event.getSession();
 
         addWarenkorb(session); // Warenkorb als Session-Attribut anlegen
-
+        System.out.println("Warenkorb als Session-Attribut anlegen");
+ 
         addToSessionList(session);
+        System.out.println("Session der Sessionliste hinzufuegen");
     }
 
     @Override
@@ -42,8 +44,8 @@ public class WarenkorbSessionListener implements HttpSessionListener {
     }
 
     private void addToSessionList(HttpSession session) {
-        ServletContext application = session.getServletContext();
-        SessionListe sessionListe = (SessionListe) application.getAttribute(SESSIONS);
+        ServletContext context2 = session.getServletContext();
+        SessionListe sessionListe = (SessionListe) context2.getAttribute(SESSIONS);
         System.out.println("Sessionliste-Größe=" + sessionListe.get().size());
         sessionListe.add(session);
     }
@@ -53,8 +55,8 @@ public class WarenkorbSessionListener implements HttpSessionListener {
     }
 
     private void removeFromSessionList(HttpSession session) {
-        ServletContext application = session.getServletContext();
-        SessionListe sessionListe = (SessionListe) application.getAttribute(SESSIONS);
+        ServletContext context2 = session.getServletContext();
+        SessionListe sessionListe = (SessionListe) context2.getAttribute(SESSIONS);
         sessionListe.remove(session);
     }
 }

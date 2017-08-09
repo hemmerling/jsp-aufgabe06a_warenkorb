@@ -20,41 +20,31 @@ import javax.servlet.http.HttpServletRequest;
  * @author Administrator
  */
 @WebListener("WarenkorbListener")
-public class WarenkorbContextListener implements ServletRequestListener, ServletContextListener {
+public class WarenkorbContextListener implements ServletContextListener {
+
+    private static final String SESSIONS = "sessions";
 
     static {
         // statischer Initalisierungsblock
-        System.out.println(WarenkorbContextListener.class.getName() +  " - Static initalisation block");
+        System.out.println(WarenkorbContextListener.class.getName() + " - Static initalisation block");
     }
 
-    public WarenkorbContextListener(){}
+    public WarenkorbContextListener() {
+    }
 
     // @Override
 //    public void init() throws ServletException {
 //        System.out.println("init()");
 //    }
-
     @Override
     public void contextInitialized(ServletContextEvent event) {
         SessionListe sessionListe = SessionListe.getInstance(); // Singleton 
         ServletContext context2 = event.getServletContext();
-        context2.setAttribute("SESSIONS", sessionListe);
-        System.out.println(WarenkorbContextListener.class.getName() +  " - contextInitialized");
+        context2.setAttribute(SESSIONS, sessionListe);
+        System.out.println(WarenkorbContextListener.class.getName() + " - contextInitialized");
     }
 
     @Override
     public void contextDestroyed(ServletContextEvent event) {
-    }
-    
-    @Override
-    public void requestInitialized(ServletRequestEvent event) {
-        ServletRequest request = event.getServletRequest();
-        System.out.println(request + ": initialized");
-        request.setAttribute("SESSIONS", request.getClass());
-    }
-
-    @Override
-    public void requestDestroyed(ServletRequestEvent event) {
-
     }
 }

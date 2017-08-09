@@ -25,13 +25,21 @@
                 <th>Preis</th>
             </tr>
             <%
-                SessionListe sessionListe = (SessionListe) application.getAttribute("sessions");
+                ServletContext context2 = session.getServletContext();
+                SessionListe sessionListe = (SessionListe) context2.getAttribute("sessions");
                 List<HttpSession> sl = sessionListe.get();
                 for (HttpSession aSession : sl) {
                     Warenkorb warenkorb = (Warenkorb) aSession.getAttribute("warenkorb");
                     List<Artikel> warenkorbListe = warenkorb.get();
                     double summe = 0d;
                     DecimalFormat f = new DecimalFormat("#0.00");
+            %>
+            <tr>
+                <th  colspan="2">
+                    <%= "Warenkorb '" + aSession.getId() + "':" %>
+                </th>
+            </tr>
+            <%
                     for (Artikel artikel : warenkorbListe) {
                         double price = artikel.getPrice();
                         summe += price;
